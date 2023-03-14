@@ -2,6 +2,7 @@ const monitor = document.querySelector('#result');
 const vars = document.querySelectorAll('input');
 const fo = document.querySelector('#formula');
 const lo = document.querySelector('#log');
+const weight = document.querySelector('#weight');
 //----
 
 const form = {
@@ -19,13 +20,17 @@ vars.forEach(item => {
     })
 })
 
+weight.addEventListener('click', e => {
+
+});
+
 function convert() {
 
 }
 
 function calculate() {
     const values = Array.from(vars).map(item => {
-        return parseFloat(item.value.trim() || 0);
+        return parseFloat(item.value.trim() || 0) / 10;
     });
 
     return formula(...values);
