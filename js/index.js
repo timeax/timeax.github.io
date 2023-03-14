@@ -40,7 +40,7 @@ function formula(ac, fl, hc, bpd) {
 
     let res = 1.3596 - a + b + c + d + e;
     lo.innerHTML = res;
-    return Math.log10(res);
+    return Math.pow(10, res);
 }
 
 /**
