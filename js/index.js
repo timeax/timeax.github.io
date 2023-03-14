@@ -1,6 +1,7 @@
 const monitor = document.querySelector('#result');
 const vars = document.querySelectorAll('input');
 const fo = document.querySelector('#formula');
+const lo = document.querySelector('#log');
 //----
 
 const form = {
@@ -37,9 +38,29 @@ function formula(ac, fl, hc, bpd) {
     const d = 0.0424 * ac;
     const e = 0.174 * fl;
 
-    return 1.3596 - a + b + c + d + e;
+    let res = 1.3596 - a + b + c + d + e;
+    lo.innerHTML = res;
+    return Math.log10(res);
 }
 
+/**
+ * 
+ * @param {string} formula 
+ */
 function parseFormula(formula) {
+    formula = formula.trim();
+    const steps = [];
+    //----
+    let pos = 0;
+    let ch = '';
+    for(;;) {
+        ch = formula.charAt(pos);
+        if(ch === undefined) break;
+        //-----
+        
+    }
+}
 
+function createNode(type) {
+    
 }
