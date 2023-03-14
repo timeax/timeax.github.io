@@ -21,16 +21,16 @@
 <body>
     <div class="d-flex flex-column main">
         <h1 class="text-center">Fetal Weight Calculator</h1>
-        <small>log10 of <span id="log"></span></small>
 
         <div class="monitor">
             <div id="result">0.0</div>
+            <input type="hidden">
             <div class="custom-select">
                 <select id="weight">
-                    <option value="kg">Convert</option>
-                    <option value="kg">Kg</option>
-                    <option value="grams">grams</option>
-                    <option value="ounces">ounces</option>
+                    <option value="">grams</option>
+                    <option value="1000">Kg</option>
+                    <option value="">grams</option>
+                    <option value="453.592">pounds</option>
                 </select>
             </div>
         </div>
@@ -40,19 +40,19 @@
             <div class="d-flex flex-column keyboard">
                 <div class="d-flex">
                     <label for="AC">AC</label>
-                    <input id="AC" type="text" value="0.0">
+                    <input id="AC" type="text" placeholder="0.0">
                 </div>
                 <div class="d-flex">
                     <label for="FL">FL</label>
-                    <input id="FL" type="text" value="0.0">
+                    <input id="FL" type="text" placeholder="0.0">
                 </div>
                 <div class="d-flex">
                     <label for="HC">HC</label>
-                    <input id="HC" type="text" value="0.0">
+                    <input id="HC" type="text" placeholder="0.0">
                 </div>
                 <div class="d-flex">
                     <label for="BPD">BPD</label>
-                    <input id="BPD" type="text" value="0.0">
+                    <input id="BPD" type="text" placeholder="0.0">
                 </div>
             </div>
         </div>

@@ -1,10 +1,10 @@
 const monitor = document.querySelector('#result');
-const vars = document.querySelectorAll('input');
+const vars = document.querySelectorAll('.keyboard input');
 const fo = document.querySelector('#formula');
 const lo = document.querySelector('#log');
-const weight = document.querySelector('#weight');
+const select = document.querySelector('#weight');
+const weight = monitor.nextElementSibling.nextElementSibling.querySelector('.select-selected');
 //----
-
 const form = {
     a: 0.00386,
     b: 0.0064,
@@ -15,24 +15,34 @@ const form = {
 
 vars.forEach(item => {
     item.addEventListener('keyup', e => {
+        const opt = select.options.selectedOptions?.[0];
+
         const value = calculate();
-        monitor.innerHTML = value;
+        setValue(value / parseFloat(opt?.value.trim() || 1));
+        monitor.nextElementSibling.value = value;
     })
 })
 
-weight.addEventListener('click', e => {
-
-});
-
-function convert() {
-
+function setValue(value) {
+    monitor.innerHTML = value;
 }
+
+let un = 0;
+weight.addEventListener('click', e => {
+    const index = select.options.selectedIndex;
+    if (un === index) return;
+    un = index;
+    const value = parseFloat(monitor.nextElementSibling.value.trim() || 0.0);
+    const opt = Array.from(select.options)[index];
+
+    setValue(value / parseFloat(opt.value.trim() || 1));
+});
 
 function calculate() {
     const values = Array.from(vars).map(item => {
         return parseFloat(item.value.trim() || 0) / 10;
     });
-
+    console.log(values, Array.from(vars).map(i => i.value))
     return formula(...values);
 }
 
@@ -44,7 +54,6 @@ function formula(ac, fl, hc, bpd) {
     const e = 0.174 * fl;
 
     let res = 1.3596 - a + b + c + d + e;
-    lo.innerHTML = res;
     return Math.pow(10, res);
 }
 
@@ -58,14 +67,14 @@ function parseFormula(formula) {
     //----
     let pos = 0;
     let ch = '';
-    for(;;) {
+    for (; ;) {
         ch = formula.charAt(pos);
-        if(ch === undefined) break;
+        if (ch === undefined) break;
         //-----
-        
+
     }
 }
 
 function createNode(type) {
-    
+
 }
